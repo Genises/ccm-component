@@ -4,6 +4,15 @@
   padding: 0.5em;
 }
 
+.ccm-comment_jmeier2s > .comments >.comment >.text {
+  max-width: 330px;
+  overflow-wrap: break-word;
+}
+
+.ccm-comment_jmeier2s > .comments > .comment:nth-child(odd){
+  background-color: whitesmoke;
+}
+
 .ccm-comment_jmeier2s > .comments > div {
   display: table-row;
 }
