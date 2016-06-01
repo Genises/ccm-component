@@ -1,0 +1,55 @@
+{
+  "main": {
+    "tag": "div",
+    "class": "comments"
+  },
+
+  "comment": {
+    "tag": "div",
+    "class": "comment",
+    "inner": [
+      {
+        "tag": "div",
+        "class": "name",
+        "inner": "%name%"
+      },
+      {
+        "tag": "div",
+        "class": "text",
+        "inner": "%text%"
+      }
+    ]
+  },
+
+  "input": {
+    "tag": "div",
+    "class": "new_comment",
+    "inner": [
+      {
+        "tag": "div",
+        "class": "name"
+      },
+      {
+        "tag": "div",
+        "class": "text",
+        "inner": {
+          "tag": "form",
+          "inner": [
+            {
+              "tag": "input",
+              "class": "input",
+              "placeholder": "Enter comment here..."
+            },
+            {
+              "tag": "input",
+              "class": "button",
+              "type": "submit",
+              "value": "Send"
+            }
+          ],
+          "onsubmit": "%onsubmit%"
+        }
+      }
+    ]
+  }
+}

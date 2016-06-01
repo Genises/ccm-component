@@ -1,0 +1,22 @@
+
+.ccm-comment_jmeier2s > .comments {
+  display: table;
+  padding: 0.5em;
+}
+
+.ccm-comment_jmeier2s > .comments > div {
+  display: table-row;
+}
+
+.ccm-comment_jmeier2s > .comments > div > div {
+  display: table-cell;
+}
+
+.ccm-comment_jmeier2s > .comments > .comment > .name:after {
+  content: ':';
+  padding-right: 0.5em;
+}
+
+.ccm-comment_jmeier2s > .comments > .comment > .name {
+  font-weight: bold;
+}
