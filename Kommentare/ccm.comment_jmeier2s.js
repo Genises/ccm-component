@@ -31,17 +31,30 @@ ccm.component( {
           for ( var i = 0; i < dataset.comments.length; i++ ) {
             var comment = dataset.comments[ i ];
             comments_div.prepend( ccm.helper.html( self.html.get( 'comment' ), {
+              date: ccm.helper.val( comment.date ),
               name: ccm.helper.val( comment.user ),
-              text: ccm.helper.val( comment.text )
+              text: ccm.helper.val( comment.text ),
             } ) );
           }
 
           comments_div.prepend( ccm.helper.html( self.html.get( 'input' ), { onsubmit: function () {
             var value = ccm.helper.val( ccm.helper.find( self, 'input' ).val() ).trim();
             if ( value === '' ) return;
+            var time;
+
             self.user.login( function () {
-              dataset.comments.push( { user: self.user.data().key, text: value } );
-              self.store.set( dataset, function () { self.render(); } );
+              $.ajax({
+                url: 'https://kaul.inf.h-brs.de/json_date.php',
+                dataType: 'jsonp',
+                success: function(data){
+                  time = new Date(data.date);
+                  console.log(time.toUTCString());
+                  dataset.comments.push( { user: self.user.data().key, text: value , date: time.toLocaleString()} );
+
+                  // update dataset for rendering in datastore
+                  self.store.set( dataset, function () { self.render(); } );
+                }
+              });
             } );
             return false;
           } } ) );
