@@ -15,6 +15,11 @@
       },
       {
         "tag": "div",
+        "class": "like",
+        "inner": "%like%"
+      },
+      {
+        "tag": "div",
         "class": "name",
         "inner": "%name%"
       },
