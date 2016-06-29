@@ -1,4 +1,4 @@
-.header{
+.header {
     position: relative;
     height: 300px;
     background-image: url(images/Lego.jpg);
@@ -6,11 +6,11 @@
     background-attachment: fixed;
 }
 
-*{
-  margin : 0;
+* {
+    margin: 0;
 }
 
-.h1{
+.h1 {
     color: white;
     font-weight: 300;
     text-align: center;
@@ -18,7 +18,19 @@
     font-size: 60px;
 }
 
-.Kommentarfelder{
+.Kommentarfelder {
     float: left;
     width: 50%;
+}
+
+.likebutton {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.dislikebutton {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }

@@ -32,15 +32,15 @@ ccm.component({
                     var actualTime = new Date();
                     var dif = new Date (actualTime - date);
                     if(dif.getTime() < 1000*60){
-                        return dif.getSeconds() + "seconds ago";
+                        return "Eingereicht vor " + dif.getSeconds() + " Sekunden von: ";
                     }
                     if(dif.getTime() < 1000*60*60){
-                        return dif.getMinutes() + "minutes ago";
+                        return "Eingereicht vor " + dif.getMinutes() + " Minuten von ";
                     }
                     if(dif.getTime() < 1000*60*60*24){
-                        return dif.getHours() + "hours ago";
+                        return "Eingereicht vor " + dif.getHours() + " Stunden von ";
                     } else {
-                        return parseInt(dif.getTime()/1000*60*60*24) + "days ago";
+                        return "Eingereicht vor " + parseInt(dif.getTime()/1000*60*60*24) + " Tagen von ";
                     }
                 }
 

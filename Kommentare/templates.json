@@ -3,7 +3,6 @@
     "tag": "div",
     "class": "comments"
   },
-
   "comment": {
     "tag": "div",
     "class": "comment",
@@ -15,29 +14,6 @@
       },
       {
         "tag": "div",
-        "class": "likevalue",
-        "inner": "%likevalue%"
-      },
-      {
-        "tag": "div",
-        "class": "like",
-        "inner": [
-          {
-            "tag": "button",
-            "class": "button",
-            "inner": "like",
-            "onclick": "%likeclick%"
-          },
-          {
-            "tag": "button",
-            "class": "button",
-            "inner": "dislike",
-            "onclick": "%dislikeclick%"
-          }
-        ]
-      },
-      {
-        "tag": "div",
         "class": "name",
         "inner": "%name%"
       },
@@ -45,14 +21,39 @@
         "tag": "div",
         "class": "text",
         "inner": "%text%"
+      },
+      {
+        "tag": "div",
+        "class": "like",
+        "inner": [
+          {
+            "tag": "button",
+            "class": "likebutton",
+            "onclick": "%likeclick%"
+          },
+          {
+            "tag": "div",
+            "class": "likevalue",
+            "inner": "%likevalue%"
+          },
+          {
+            "tag": "button",
+            "class": "dislikebutton",
+            "onclick": "%dislikeclick%"
+          }
+        ]
       }
     ]
   },
-
   "input": {
     "tag": "div",
     "class": "new_comment",
     "inner": [
+      {
+        "tag": "div",
+        "class": "text",
+        "inner": "Kommentare: %totalcomments%"
+      },
       {
         "tag": "div",
         "class": "name"
@@ -70,18 +71,13 @@
             },
             {
               "tag": "input",
-              "class": "button",
+              "class": "inputbutton",
               "type": "submit",
               "value": "Send"
             }
           ],
           "onsubmit": "%onsubmit%"
         }
-      },
-      {
-        "tag": "div",
-        "class": "text",
-        "inner": "Anzahl Kommentare: %totalcomments%"
       }
     ]
   }

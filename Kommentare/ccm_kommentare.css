@@ -1,16 +1,16 @@
-
 .ccm-comment_jmeier2s > .comments {
   display: table;
   padding: 0.5em;
 }
 
 .ccm-comment_jmeier2s > .comments >.comment >.text {
-  max-width: 330px;
+  max-width: 500px;
   overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
-.ccm-comment_jmeier2s > .comments > .comment:nth-child(odd){
-  background-color: #F7F7F7;
+.ccm-comment_jmeier2s > .comments > .comment:nth-child(even){
+  background-color: aliceblue;
 }
 
 .ccm-comment_jmeier2s > .comments > div {
@@ -28,4 +28,48 @@
 
 .ccm-comment_jmeier2s > .comments > .comment > .name {
   font-weight: bold;
+}
+
+.ccm-comment_jmeier2s > .comments > .comment > .date:after {
+  content: "\00a0 ";
+}
+
+.inputbutton {
+  color: #333;
+  background-color: #9d9d9d;
+  border: none;
+  padding: 5px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.input {
+  padding: 3px 12px;
+  font-size: 16px;
+}
+
+.likevalue {
+  text-align: center;
+}
+
+button.likebutton, button.dislikebutton {
+  width: 0px;
+  height: 0px;
+  overflow: visible;
+  background: transparent;
+  border-style: solid;
+  margin: 0;
+  padding: 0;
+}
+
+button.likebutton {
+  border-width: 0px 10px 10px 10px;
+  border-color: transparent transparent #000000 transparent;
+}
+
+button.dislikebutton {
+  border-width: 10px 10px 0 10px;
+  border-color: #000000 transparent transparent transparent;
 }
