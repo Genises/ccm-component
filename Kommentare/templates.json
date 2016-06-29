@@ -15,8 +15,26 @@
       },
       {
         "tag": "div",
+        "class": "likevalue",
+        "inner": "%likevalue%"
+      },
+      {
+        "tag": "div",
         "class": "like",
-        "inner": "%like%"
+        "inner": [
+          {
+            "tag": "button",
+            "class": "button",
+            "inner": "like",
+            "onclick": "%likeclick%"
+          },
+          {
+            "tag": "button",
+            "class": "button",
+            "inner": "dislike",
+            "onclick": "%dislikeclick%"
+          }
+        ]
       },
       {
         "tag": "div",

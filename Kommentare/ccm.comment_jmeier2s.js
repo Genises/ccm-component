@@ -30,21 +30,31 @@ ccm.component({
                 function proceed(dataset) {
                     element.html(ccm.helper.html(self.html.get('main')));
                     var comments_div = ccm.helper.find(self, '.comments');
+
                     dataset.comments.sort(function (a, b) {
-                        return b.like - a.like
+                        return b.likevalue - a.likevalue
                     });
+
                     for (var i = 0; i < dataset.comments.length; i++) {
                         var comment = dataset.comments[i];
+                        console.log(dataset.comments[i]);
 
-                        comments_div.append(ccm.helper.html(self.html.get('comment'), {
-                            like: ccm.helper.val(comment.like + '<button class="like">' + 'Like' + '</button>' +
-                                '<button class="dislike">' + 'Dislike' + '</button>'
-                            ),
-                            date: ccm.helper.val(comment.date),
-                            name: ccm.helper.val(comment.user),
-                            text: ccm.helper.val(comment.text)
-
-                        }));
+                        (function (comment) {
+                            comments_div.append(ccm.helper.html(self.html.get('comment'), {
+                                date: ccm.helper.val(comment.date),
+                                name: ccm.helper.val(comment.user),
+                                text: ccm.helper.val(comment.text),
+                                likevalue: ccm.helper.val(comment.likevalue),
+                                likeclick: function () {
+                                    comment.likevalue = parseInt(comment.likevalue) + 1 ;
+                                    console.log(comment);
+                                },
+                                dislikeclick: function () {
+                                    comment.likevalue = parseInt(comment.likevalue) - 1 ;
+                                    console.log(comment);
+                                }
+                            }));
+                        })(comment);
                     }
 
                     comments_div.prepend(ccm.helper.html(self.html.get('input'), {
@@ -64,7 +74,7 @@ ccm.component({
                                             user: self.user.data().key,
                                             text: value,
                                             date: time.toLocaleString(),
-                                            like: '0'
+                                            likevalue: '0'
                                         });
 
                                         // update dataset for rendering in datastore
