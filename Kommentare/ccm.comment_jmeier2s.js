@@ -27,6 +27,23 @@ ccm.component({
                     self.store.set({key: self.key, comments: []}, proceed);
                 else
                     proceed(dataset);
+
+                function convertDate(date){
+                    var actualTime = new Date();
+                    var dif = new Date (actualTime - date);
+                    if(dif.getTime() < 1000*60){
+                        return dif.getSeconds() + "seconds ago";
+                    }
+                    if(dif.getTime() < 1000*60*60){
+                        return dif.getMinutes() + "minutes ago";
+                    }
+                    if(dif.getTime() < 1000*60*60*24){
+                        return dif.getHours() + "hours ago";
+                    } else {
+                        return parseInt(dif.getTime()/1000*60*60*24) + "days ago";
+                    }
+                }
+
                 function proceed(dataset) {
                     element.html(ccm.helper.html(self.html.get('main')));
                     var comments_div = ccm.helper.find(self, '.comments');
@@ -37,56 +54,57 @@ ccm.component({
 
                     for (var i = 0; i < dataset.comments.length; i++) {
                         var comment = dataset.comments[i];
-                        console.log(dataset.comments[i]);
-
                         (function (comment) {
                             comments_div.append(ccm.helper.html(self.html.get('comment'), {
-                                date: ccm.helper.val(comment.date),
+                                date: ccm.helper.val(convertDate(new Date(comment.date))),
                                 name: ccm.helper.val(comment.user),
                                 text: ccm.helper.val(comment.text),
                                 likevalue: ccm.helper.val(comment.likevalue),
                                 likeclick: function () {
                                     comment.likevalue = parseInt(comment.likevalue) + 1 ;
                                     console.log(comment);
+                                    self.store.set(dataset, function () {
+                                        self.render();
+                                    });
                                 },
                                 dislikeclick: function () {
                                     comment.likevalue = parseInt(comment.likevalue) - 1 ;
                                     console.log(comment);
+                                    self.store.set(dataset, function () {
+                                        self.render();
+                                    });
                                 }
                             }));
+
                         })(comment);
                     }
 
                     comments_div.prepend(ccm.helper.html(self.html.get('input'), {
+                        totalcomments: dataset.comments.length,
                         onsubmit: function () {
                             var value = ccm.helper.val(ccm.helper.find(self, 'input').val()).trim();
                             if (value === '') return;
                             var time;
 
                             self.user.login(function () {
-                                $.ajax({
-                                    url: 'https://kaul.inf.h-brs.de/json_date.php',
-                                    dataType: 'jsonp',
-                                    success: function (data) {
-                                        time = new Date(data.date);
-                                        console.log(time.toUTCString());
                                         dataset.comments.push({
                                             user: self.user.data().key,
                                             text: value,
-                                            date: time.toLocaleString(),
+                                            date: new Date(),
                                             likevalue: '0'
                                         });
-
                                         // update dataset for rendering in datastore
                                         self.store.set(dataset, function () {
                                             self.render();
                                         });
-                                    }
-                                });
                             });
                             return false;
                         }
                     }));
+
+
+
+
                     if (callback) callback();
                 }
             });

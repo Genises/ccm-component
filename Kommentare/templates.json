@@ -77,6 +77,11 @@
           ],
           "onsubmit": "%onsubmit%"
         }
+      },
+      {
+        "tag": "div",
+        "class": "text",
+        "inner": "Anzahl Kommentare: %totalcomments%"
       }
     ]
   }
