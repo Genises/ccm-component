@@ -4,10 +4,10 @@
 ccm.component({
     name: 'comment_jmeier2s', //eigene für den Store
     config: {
-        html: [ccm.store, {local: 'templates.json'}],
+        html: [ccm.store, "https://github.com/Genises/ccm-components/tree/master/Kommentare/templates.json"],
         key: 'test',      //für den eigenen Chat
         store: [ccm.store, {url: 'ws://ccm2.inf.h-brs.de/index.js', store: 'comment_jmeier2s'}],
-        style: [ccm.load, 'ccm_kommentare.css'],
+        style: [ccm.load, '"https://github.com/Genises/ccm-components/tree/master/Kommentare/ccm_kommentare.css"'],
         user: [ccm.instance, 'https://kaul.inf.h-brs.de/ccm/components/user2.js']
     },
 
